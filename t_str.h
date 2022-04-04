@@ -37,7 +37,7 @@ char *keep3str(char *s1,char *s2,char *s3)
 char *keepstrs(int r,char *s[])
 {
     int length=0,p=0;
-    int len[r];
+    int *len=new int[r];
     for(int i=0; i<r; i++)
     {
         len[i]=strlen(s[i]);
@@ -67,7 +67,7 @@ char *new_file_path (char *old_file_path,char *new_file_name)
     if(old_file_name!=NULL)
     {
         int folder_length=strlen(old_file_path)-strlen(old_file_name);
-        char path[folder_length+1];
+        char *path=new char[folder_length+1];
         int i;
         for( i=0; i<folder_length; i++)
         {
@@ -88,7 +88,7 @@ char *get_folder_from_path(char *path)
     char *pos_slash;
 
     {
-        char cache[strlen(path)+1];
+        char* cache=new char[strlen(path)+1];
         strcpy(cache,path);
 
         pos_slash=strrchr(cache,'\\');
@@ -114,7 +114,7 @@ char *get_name_from_url(char *url,char *old_path)
 
     if(url!=NULL)
     {
-        char cache[strlen(url)+1];
+        char* cache=new char[strlen(url)+1];
         strcpy(cache,url);
 
         if(strlen(cache)<1)
@@ -154,7 +154,7 @@ char *url_to_local_path(char *url,char *old_path)
 
     if(url!=NULL)
     {
-        char cache[strlen(url)+1];
+        char *cache=new char[strlen(url)+1];
         strcpy(cache,url);
 
         pos_quer=strchr(pos_dot,'?');

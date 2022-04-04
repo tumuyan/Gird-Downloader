@@ -32,3 +32,5 @@
 *.app
 bin/Release
 file.log
+Debug
+.vs

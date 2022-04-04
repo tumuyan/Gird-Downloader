@@ -49,7 +49,7 @@ bool writeLogLine(const char *fileName, char *content,char *path)
     int content_length=strlen(content);
 
 
-    char cache[content_length+1];
+    char* cache = new char[content_length + 1] ;
 
     //  去除url中的空格
     int j=0;
@@ -299,14 +299,14 @@ int run_gd(char *gda,char *gdb,char *log_path,char *gd_filename)
                 // 考虑到长度不确定，如果需要补零，补到gda的数字的长度即可满足需求
                 // 不考虑高位加固定个的0的问题。
                 int print_length=det_chars_int_length(a+i+q);
-                char link[B];
-                char link_x[i+q+1];
+                char *link=new char[B];
+                char *link_x=new char[i+q+1];
                 link_x[i+q]='\0';
                 strncpy(link_x,a,i+q);
 
 
                 // char link_y[21];
-                char link_z[A-i-q+1-print_length];
+                char* link_z=new char[A-i-q+1-print_length];
                 link_z[B-i-q-print_length]='\0';
                 strcpy(link_z,a+i+q+print_length);
 
@@ -502,8 +502,7 @@ int run_gd(char *gda,char *gdb,char *log_path,char *gd_filename)
     return counter;
 }
 
-
-int main( int argc, char *argv[] )
+int  main( int argc, char *argv[] )
 {
    printf("Grid Downloader \nver0.1, by tumuyan \nhttps://github.com/tumuyan/Gird-Downloader\n\n");
     //  正常启动时至少会接受2个参数。第一个参数是程序名
@@ -582,7 +581,7 @@ int main( int argc, char *argv[] )
                     // 其中gda 标识从此url开始产生，gdb标识终止的url；
 
 
-                    char gd_link[content_length-3];
+                    char* gd_link=new char[content_length-3];
                     //  gd_link[content_length-4]='\0';
                     //去除url中的空格
                     int j=0;
