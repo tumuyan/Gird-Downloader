@@ -9,3 +9,13 @@
 	<stdlib.h>
 	<math.h>
 
+1649083640 source:a:\projectc\girddownloader\gird-downloader\main.cpp
+	<iostream>
+	"t_str.h"
+
+1649082384 a:\projectc\girddownloader\gird-downloader\t_str.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+

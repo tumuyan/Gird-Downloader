@@ -4,18 +4,7 @@ using namespace std;
 
 #include "t_str.h"
 
-/* GirdDownloader说明
-gd是一个调用aria2来进行批量下载任务的工具
-用一个包含下载链接的文本文件（定义这个文件为“源”）作为参数来打开gd，gd会下载链接中的文件到源所在的目录，同时自动跳过目录中已有的文件。
-源的每一行都是一个下载链接；同时gd会自动忽略 每一行中的空字符。
-源的某一行开头以`gda `，且下一行开头以`gdb `，则自动比较两个url中的数字的关联性，并下载一系列文件
-如果已经下载并且不为空，则不重新下载
-程序调用时允许接收参数 `-r`，下载文件时自动重命名文件为数字编号
-*/
-
-//str * url_cache;
-
-
+// 文件名称的自动编号，<0时不使用自动编号
 int gd_index=-1;
 bool detFile(char *targetPath)
 {
@@ -85,9 +74,6 @@ bool writeLogLine(const char *fileName, char *content,char *path)
     char* name = NULL;
     if(gd_index>0)
     {
-     //   name = url_to_local_name(content,gd_index);
-
-
         char *pos_dot=strrchr(cache,'.');
 
         if(pos_dot != NULL)
@@ -95,14 +81,12 @@ bool writeLogLine(const char *fileName, char *content,char *path)
             int len = strlen(pos_dot);
             if(len<6 &&len>1)
             {
-                // len =len+ ceil(log10(index))+1;
                 name = (char *)malloc(len +  ceil(log10(gd_index)) + 1);
                 len = sprintf(name,"%d%s",gd_index,pos_dot);
                 name[len] = '\0';
             }
         }
 
-        //     sprintf(name, "")
         if(name==NULL)
         {
             full_name=url_to_local_path(content,path);
@@ -519,9 +503,9 @@ int run_gd(char *gda,char *gdb,char *log_path,char *gd_filename)
 }
 
 
-main( int argc, char *argv[] )
+int main( int argc, char *argv[] )
 {
-
+   printf("Grid Downloader \nver0.1, by tumuyan \nhttps://github.com/tumuyan/Gird-Downloader\n\n");
     //  正常启动时至少会接受2个参数。第一个参数是程序名
     if(argc<2)
     {
@@ -669,7 +653,4 @@ main( int argc, char *argv[] )
     system("PAUSE");
     return 0;
 
-// A:\ProjectC\GirdDownloader\aria2\aria2c.exe  -d download -i A:\ProjectC\GirdDownloader\file.log
-//    Download URIs found in text file:
-// A:\ProjectC\GirdDownloader\aria2-1.35.0-win-64bit-build1\aria2c.exe  -d ./download -i uris.txt
 }

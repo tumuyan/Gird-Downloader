@@ -184,41 +184,6 @@ char *url_to_local_path(char *url,char *old_path)
     return NULL;
 }
 
-// 从url中取得文件名的后缀，如果获取失败返回null；使用index作为文件名
-char *url_to_local_name(char *url, int index)
-{
-
-    char *pos_dot=strrchr(url,'.');
-
-    if(pos_dot != NULL)
-    {
-        if(strlen(pos_dot)<5)
-        {
-            char *out;
-//            int len = ceil(log10(index));
-//
-//
-//            out=(char *)malloc(len + strlen(pos_dot) + 1);
-//            int left = index;
-//
-//            for(int i=len; i>0; i--)
-//            {
-//                out[i]= fmod(left,10);
-//                left = left/10;
-//            }
-//            out[0]=
-//            strcpy(out+len,pos_dot);
-//
-//            return out;
-            sprintf(out,"%d%s",index,pos_dot);
-            return out;
-        }
-    }
-    return NULL;
-}
-
-
-
 
 // 由于路径包含了文件名，返回的是指针，没有复制内容
 char *get_file_name(char *path)
