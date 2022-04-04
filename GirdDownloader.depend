@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1649078078 source:a:\projectc\girddownloader\main.cpp
+	<iostream>
+	"t_str.h"
+
+1649075288 a:\projectc\girddownloader\t_str.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<math.h>
+
