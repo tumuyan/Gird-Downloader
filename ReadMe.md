@@ -49,7 +49,11 @@
 
 虽然代码很凑数，但是如果你一定要自己编译或者修改，也不是不行。
 
-clone后直接使用[codeblocks-20.03-nosetup](https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03-nosetup.zip/download)打开即可进行编译。
+~~clone后直接使用[codeblocks-20.03-nosetup](https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03-nosetup.zip/download)打开即可进行编译。~~
+
+由于未知原因（其实应该还是运行时的问题吧），现在在Code::Blocks中可以编译并运行，但是无法脱离Code::Blocks使用。故改为vs编译（Microsoft Visual Studio Community 2019）。
+
+
 
 
 
